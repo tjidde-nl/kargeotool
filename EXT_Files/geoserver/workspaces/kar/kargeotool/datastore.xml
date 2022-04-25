@@ -25,7 +25,7 @@
     <entry key="Connection timeout">20</entry>
     <entry key="create database">false</entry>
     <entry key="port">5432</entry>
-    <entry key="passwd">crypt1:w6UYf7Y03i923ZVJmF0iOOTqw3yt6NdPjrr646AiyCW4jsr/qZW34xea4Ek4EgCl</entry>
+    <entry key="passwd">----</entry>
     <entry key="min connections">1</entry>
     <entry key="dbtype">postgis</entry>
     <entry key="namespace">https://kargeotool.nl</entry>
