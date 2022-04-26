@@ -27,3 +27,4 @@ steps:
     dockerComposeFile: '**/docker-compose.yml'
     projectName: 'kargeo'
     action: 'Push services'
+    includeLatestTag: true
