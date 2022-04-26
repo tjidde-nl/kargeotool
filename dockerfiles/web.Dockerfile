@@ -10,7 +10,7 @@ RUN apk add git
 RUN mkdir /kar
 RUN git clone https://github.com/tjidde-nl/kargeotool.git /kar
 
-RUN mvn -f /kar clean install
+RUN mvn -f /kar clean install -q
 
 #Create TOMCAT
 FROM tomcat:9.0-alpine
