@@ -8,9 +8,10 @@ trigger:
 - master
 
 pool:
-  vmImage: windows-2019
+  vmImage: ubuntu-20.04
 
 steps:
+
 - task: DockerCompose@0
   inputs:
     containerregistrytype: 'Container Registry'
