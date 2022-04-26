@@ -11,18 +11,9 @@ pool:
   vmImage: ubuntu-20.04
 
 steps:
-- task: DockerCompose@0
-  inputs:
-    containerregistrytype: 'Container Registry'
-    dockerRegistryEndpoint: 'Merkator registry'
-    dockerComposeFile: '**/docker-compose.yml'
-    action: 'Build services'
-    includeSourceTags: true
-    arguments: '--parallel'
 
-    
 - task: PublishBuildArtifacts@1
   inputs:
-    PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+    PathtoPublish: '$(Build.SourcesDirectory)'
     ArtifactName: 'dockercontainers'
     publishLocation: 'Container'
