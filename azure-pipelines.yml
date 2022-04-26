@@ -19,6 +19,7 @@ steps:
     dockerComposeFile: '**/docker-compose.yml'
     action: 'Build services'
     includeLatestTag: true
+    includeSourceTags: true
 
 - task: DockerCompose@0
   inputs:
