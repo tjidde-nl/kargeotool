@@ -18,6 +18,7 @@ steps:
     dockerRegistryEndpoint: 'Merkator registry'
     dockerComposeFile: '**/docker-compose.yml'
     action: 'Build services'
+    includeLatestTag: true
 
 - task: DockerCompose@0
   inputs:
