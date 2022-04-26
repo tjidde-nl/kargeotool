@@ -11,15 +11,7 @@ pool:
 
 steps:
 
-- task: RegexReplace@3
-  inputs:
-    InputSearchPattern: |
-      **/context.xml
-      **/docker-compose.yml
-    FindRegex: '<@prod_pass@>'
-    ReplaceRegex: '$(postgresPassword)'
-    UseUTF8: true
-    UseRAW: true
+
 - task: Maven@3
   inputs:
     mavenPomFile: 'pom.xml'
@@ -37,12 +29,7 @@ steps:
     rootFolderOrFile: '$(Build.SourcesDirectory)'
     includeRootFolder: true
     archiveType: 'zip'
-    archiveFile: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
+    archiveFile: '$(Build.Repository.Name)/git'
     replaceExistingArchive: true
 
-- task: DockerCompose@0
-  inputs:
-    containerregistrytype: 'Container Registry'
-    dockerComposeFile: '**/docker-compose.yml'
-    action: Run a Docker Compose command
-    dockerComposeCommand: 'rm'
+
