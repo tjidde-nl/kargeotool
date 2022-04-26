@@ -27,15 +27,16 @@
     <!-- Uncomment this to disable session persistence across Tomcat restarts -->
     <!--
     <Manager pathname="" />
-    
-	    <Resource
+          
+    -->
+		<Resource
         name="jdbc/kv7netwerk"
         auth="Container"
         type="javax.sql.DataSource"
         username="postgres"
-        password="postgres"
+        password="<@pass@>"
         driverClassName="org.postgresql.Driver"
-        url="jdbc:postgresql://db_dova:5432/kv7netwerk"
+        url="jdbc:postgresql://db_dova:5432/kv7network?currentSchema=data,public"
         maxTotal="25"
         validationQuery="select 1"
         timeBetweenEvictionRunsMillis="30000"
@@ -43,11 +44,12 @@
         removeAbandoned="true"
         removeAbandonedTimeout="60"
         logAbandoned="true"            
-    /> -->
+    />
+
 
 	 <Resource name="jdbc/kargeotool" auth="Container" type="javax.sql.DataSource"
                maxTotal="100" maxIdle="30" maxWaitMillis="10000"
-               username="postgres" password="<@prod_pass@>" driverClassName="org.postgresql.Driver"
+               username="postgres" password="<@pass@>" driverClassName="org.postgresql.Driver"
                url="jdbc:postgresql://db_dova/postgres?currentSchema=data"/>
 			   
 	<Resource name="mail/session"
