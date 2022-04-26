@@ -18,8 +18,8 @@ RUN  mvn -f /kar clean install -q
 FROM tomcat:9-jre11-temurin
 LABEL maintainer='Tjidde.Nieuwenhuizen@merkator.com'
 COPY --from=builder $HOME/kar/target/*.war /usr/local/tomcat/webapps/kv7network.war
-COPY ./EXT_Files/jar/* lib/
-COPY ./EXT_Files/context/* conf/
+COPY ../EXT_Files/jar/* lib/
+COPY ../EXT_Files/context/* conf/
 
 EXPOSE 8080
 

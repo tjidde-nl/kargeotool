@@ -17,8 +17,8 @@ FROM tomcat:9.0-alpine
 
 LABEL maintainer='Tjidde.Nieuwenhuizen@merkator.com'
 COPY --from=builder $HOME/kar/target/* /usr/local/tomcat/webapps/
-COPY ./EXT_Files/jar/* lib/
-COPY ./EXT_Files/context/* conf/
+COPY ../EXT_Files/jar/* lib/
+COPY ../EXT_Files/context/* conf/
 EXPOSE 8080
 
 CMD [ "catalina.sh", "run" ]
