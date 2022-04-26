@@ -28,3 +28,4 @@ steps:
     projectName: 'kargeo'
     action: 'Push services'
     includeLatestTag: true
+    includeSourceTags: true
