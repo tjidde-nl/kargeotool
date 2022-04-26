@@ -17,8 +17,7 @@ steps:
     containerregistrytype: 'Container Registry'
     dockerRegistryEndpoint: 'Merkator registry'
     dockerComposeFile: '**/docker-compose.yml'
-    action: 'Build services'
-    includeLatestTag: true
+    action: 'Build services'    
     includeSourceTags: true
 
 - task: DockerCompose@0
@@ -28,5 +27,4 @@ steps:
     dockerComposeFile: '**/docker-compose.yml'
     projectName: 'kargeo'
     action: 'Push services'
-    includeLatestTag: true
     includeSourceTags: true
