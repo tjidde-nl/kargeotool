@@ -1,4 +1,5 @@
 # Maven
+
 # Build your Java project and run tests with Apache Maven.
 # Add steps that analyze code, save build artifacts, deploy, and more:
 # https://docs.microsoft.com/azure/devops/pipelines/languages/java
@@ -10,16 +11,16 @@ pool:
   vmImage: windows-2019
 
 steps:
-- task: ArchiveFiles@2
+- task: DockerCompose@0
   inputs:
-    rootFolderOrFile: '$(Build.SourcesDirectory)'
-    includeRootFolder: true
-    archiveType: 'zip'
-    archiveFile: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
-    replaceExistingArchive: true
-
-- task: PublishBuildArtifacts@1
+    containerregistrytype: 'Container Registry'
+    dockerRegistryEndpoint: 'Merkator registry'
+    dockerComposeFile: '**/docker-compose.yml'
+    action: 'Build services'
+  
+- task: DockerCompose@0
   inputs:
-    PathtoPublish: '$(Build.ArtifactStagingDirectory)'
-    ArtifactName: 'code'
-    publishLocation: 'Container'
+    containerregistrytype: 'Container Registry'
+    dockerRegistryEndpoint: 'Merkator registry'
+    dockerComposeFile: '**/docker-compose.yml'
+    action: 'Push services'
