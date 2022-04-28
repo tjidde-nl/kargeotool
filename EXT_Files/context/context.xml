@@ -34,9 +34,9 @@
         auth="Container"
         type="javax.sql.DataSource"
         username="postgres"
-        password="<@pass@>"
+        password="-@pass@-"
         driverClassName="org.postgresql.Driver"
-        url="jdbc:postgresql://db_dova:5432/kv7network?currentSchema=data,public"
+        url="jdbc:postgresql://kargeo-postgis:5432/kv7network?currentSchema=data,public"
         maxTotal="25"
         validationQuery="select 1"
         timeBetweenEvictionRunsMillis="30000"
@@ -49,13 +49,13 @@
 
 	 <Resource name="jdbc/kargeotool" auth="Container" type="javax.sql.DataSource"
                maxTotal="100" maxIdle="30" maxWaitMillis="10000"
-               username="postgres" password="<@pass@>" driverClassName="org.postgresql.Driver"
-               url="jdbc:postgresql://db_dova/postgres?currentSchema=data"/>
+               username="postgres" password="-@pass@-" driverClassName="org.postgresql.Driver"
+               url="jdbc:postgresql://kargeo-postgis/postgres?currentSchema=data"/>
 			   
 	<Resource name="mail/session"
        auth="Container"
        type="javax.mail.Session"
-       mail.smtp.host="test_mail_1"
+       mail.smtp.host="kargeo-mail"
        mail.from="ovdata@dova.nu"
      />
 
