@@ -21,4 +21,6 @@ COPY ./EXT_Files/jar/* lib/
 COPY ./EXT_Files/context/* conf/
 EXPOSE 8080
 
-CMD [ "catalina.sh", "run" ]
+ENTRYPOINT [ "/entrypoint" ]
+CMD ["acc"]
+
