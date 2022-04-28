@@ -1,16 +1,19 @@
-#!/bin/bash 
-search = "<@url@>"
-url= "http://127.0.0.1"
-case $1 in
-    
+#!/bin/bash
+set -x
+echo "test"
+
+if [ "$1" = tomcat ]; then
+  search="<@URL@>"
+  url=http://127.0.0.1
+  case $DOCKER_ENV in
   acc)
-     url= "https://acc.kargeotool.nl"
+    url=https://acc.kargeotool.nl
     ;;
-
   prod)
-    url= "https://kargeotool.nl"
-    ;;    
-esac
-sed -i "s$search|$replace|g" 
-
-$CATALINA_BASE/catalina.sh run
+    url=https://kargeotool.nl
+    ;;
+  esac
+  sed -i "s|$search|$url|g" /usr/local/tomcat/webapps/kargeotool/META-INF/context.xml
+  exec catalina.sh run
+fi
+#exec "$@"

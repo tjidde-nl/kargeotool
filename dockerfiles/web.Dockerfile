@@ -16,11 +16,17 @@ RUN mvn -f /kar clean install -q
 FROM tomcat:9.0-alpine
 
 LABEL maintainer='Tjidde.Nieuwenhuizen@merkator.com'
-COPY --from=builder $HOME/kar/target/* /usr/local/tomcat/webapps/
-COPY ./EXT_Files/jar/* lib/
-COPY ./EXT_Files/context/* conf/
+COPY --from=builder $HOME/kar/target/* /
+COPY ../EXT_Files/jar/* lib/
+COPY ../EXT_Files/context/* conf/
 EXPOSE 8080
 
+
+RUN mkdir -p /usr/local/tomcat/webapps/kargeotool/
+RUN unzip -qo /kargeotool.war -d /usr/local/tomcat/webapps/kargeotool/
+EXPOSE 8080
+
+COPY ./dockerfiles/entrypoint /
 ENTRYPOINT [ "/entrypoint" ]
-CMD ["acc"]
+CMD ["tomcat"]
 
