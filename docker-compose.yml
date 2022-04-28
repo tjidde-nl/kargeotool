@@ -14,9 +14,12 @@ version: '3.9'
 
 services:
   db:
-    image: postgis/postgis
-    container_name: db_dova
+    image: docker.merkator.com/kargeo/postgis
+    container_name: kargeo-postgis
     restart: always
+    build: 
+      context: .
+      dockerfile: ./dockerfiles/postgis.Dockerfile
     environment:
       POSTGRES_PASSWORD: <@pass@>
     ports:
@@ -26,7 +29,8 @@ services:
     volumes:
       - db_files:/var/lib/postgresql/data
   web:
-    container_name: web_dova
+    image: docker.merkator.com/kargeo/web
+    container_name: kargeo-web
     build:
         context: .
         dockerfile: ./dockerfiles/web.Dockerfile
@@ -35,7 +39,8 @@ services:
     networks:
         - kargeo-network
   geoserver:
-    container_name: geoserver_dova
+    image: docker.merkator.com/kargeo/geoserver
+    container_name: kargeo-geoserver
     build:
         context: .
         dockerfile: ./dockerfiles/geoserver.Dockerfile
@@ -44,7 +49,8 @@ services:
     networks:
         - kargeo-network
   kv7network:
-    container_name: kv7network_dova
+    image: docker.merkator.com/kargeo/kv7network
+    container_name: kargeo-kv7network
     build:
         context: .
         dockerfile: ./dockerfiles/kv7network.Dockerfile
@@ -53,8 +59,9 @@ services:
     networks:
         - kargeo-network
   proxy:
+    image: docker.merkator.com/kargeo/proxy
     restart: always
-    container_name: proxy_dova
+    container_name: kargeo-proxy
     networks:
       - kargeo-network    
     ports:
@@ -67,7 +74,10 @@ services:
       - ./certbot/www:/var/www/certbot/:ro
       - ./certbot/conf/:/etc/nginx/ssl/:ro
   certbot:
-    image: certbot/certbot:latest
+    image: docker.merkator.com/kargeo/certbot
+    build: 
+      context: .
+      dockerfile: ./dockerfiles/certbot.Dockerfile
     networks:
       - kargeo-network    
     volumes:
@@ -75,9 +85,12 @@ services:
       - ./certbot/conf/:/etc/letsencrypt/:rw
 
   mail:
-    image: bytemark/smtp
-    container_name: mail_dova
+    image: docker.merkator.com/kargeo/smtp
+    container_name: kargeo-mail
     restart: always
+    build: 
+      context: .
+      dockerfile: ./dockerfiles/mail.Dockerfile
     networks:
         - kargeo-network
 volumes:
