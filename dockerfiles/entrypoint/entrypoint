@@ -1,0 +1,16 @@
+#!/bin/bash 
+search = "<@url@>"
+url= "http://127.0.0.1"
+case $1 in
+    
+  acc)
+     url= "https://acc.kargeotool.nl"
+    ;;
+
+  prod)
+    url= "https://kargeotool.nl"
+    ;;    
+esac
+sed -i "s$search|$replace|g" 
+
+$CATALINA_BASE/catalina.sh run
