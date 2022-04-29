@@ -135,7 +135,7 @@ public class ExportCreatorThread extends Thread {
             String body = "";
             body += "Beste, <br/>";
             body += "<br/>";
-            body += "Uw download is gereed. U kunt hem hier downloaden: <a href=\"" + appURL + "/action/download?filename=" + destination.getName() + "\">link</a>. Deze link is 7 dagen geldig.<br/>";
+            body += "Uw download is gereed. U kunt hem hier downloaden: <a href=\"" + appURL + "/kargeotool/action/download?filename=" + destination.getName() + "\">link</a>. Deze link is 7 dagen geldig.<br/>";
             body += "<br/>Met vriendelijke groet <br/>";
             sendMail(body);
         } else {
