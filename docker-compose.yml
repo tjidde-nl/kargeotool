@@ -21,7 +21,7 @@ services:
       context: .
       dockerfile: ./dockerfiles/postgis.Dockerfile
     environment:
-      POSTGRES_PASSWORD: <@pass@>
+      POSTGRES_PASSWORD: -@pass@-
     ports:
       - "5432:5432"
     networks:
