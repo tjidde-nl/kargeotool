@@ -17,11 +17,9 @@ services:
     image: docker.merkator.com/kargeo/postgis
     container_name: kargeo-postgis
     restart: always
-    build: 
-      context: .
-      dockerfile: ./dockerfiles/postgis.Dockerfile
+  
     environment:
-      POSTGRES_PASSWORD: <@pass@>
+      POSTGRES_PASSWORD: -@pass@-
     ports:
       - "5432:5432"
     networks:
@@ -31,9 +29,6 @@ services:
   web:
     image: docker.merkator.com/kargeo/web
     container_name: kargeo-web
-    build:
-        context: .
-        dockerfile: ./dockerfiles/web.Dockerfile
     ports:
       - "8080:8080"
     networks:
@@ -41,9 +36,6 @@ services:
   geoserver:
     image: docker.merkator.com/kargeo/geoserver
     container_name: kargeo-geoserver
-    build:
-        context: .
-        dockerfile: ./dockerfiles/geoserver.Dockerfile
     ports:
       - "8081:8080"
     networks:
@@ -51,9 +43,6 @@ services:
   kv7network:
     image: docker.merkator.com/kargeo/kv7network
     container_name: kargeo-kv7network
-    build:
-        context: .
-        dockerfile: ./dockerfiles/kv7network.Dockerfile
     ports:
       - "8082:8080"
     networks:
@@ -67,17 +56,11 @@ services:
     ports:
       - "443:443"
       - "80:80"
-    build:
-        context: .
-        dockerfile: ./dockerfiles/proxy.Dockerfile  
     volumes:
       - ./certbot/www:/var/www/certbot/:ro
       - ./certbot/conf/:/etc/nginx/ssl/:ro
   certbot:
     image: docker.merkator.com/kargeo/certbot
-    build: 
-      context: .
-      dockerfile: ./dockerfiles/certbot.Dockerfile
     networks:
       - kargeo-network    
     volumes:
@@ -88,9 +71,6 @@ services:
     image: docker.merkator.com/kargeo/smtp
     container_name: kargeo-mail
     restart: always
-    build: 
-      context: .
-      dockerfile: ./dockerfiles/mail.Dockerfile
     networks:
         - kargeo-network
 volumes:
