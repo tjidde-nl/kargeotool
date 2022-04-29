@@ -4,10 +4,10 @@
   <ResourceLink global="jdbc/kargeotool" name="jdbc/kargeotool" type="javax.sql.DataSource"/>
   <ResourceLink global="jdbc/kv7netwerk" name="jdbc/kv7netwerk" type="javax.sql.DataSource"/>
   <ResourceLink global="mail/session" name="mail/session" type="javax.mail.Session"/>
-  <Parameter name="mapserver-url" override="false" value="<@URL@>/geoserver/kar/wms"/>
+  <Parameter name="mapserver-url" override="false" value="https://kargeotool.nl/geoserver/kar/wms"/>
   <Parameter name="debug_editoractionbean_saveorupdate" override="false" value="false"/>
   <Parameter name="debug_editoractionbean_view" override="false" value="false"/>
-  <Parameter name="application-url" override="false" value="<@URL@>"/>
+  <Parameter name="application-url" override="false" value="https://kargeotool.nl/"/>
   <Parameter name="download.location" override="false" value="/usr/local/tomcat"/>
   <!--Configure at which interval in minutes the carriers informer job should be run.
             Comment out this parameter or set to -1 to disable.-->
