@@ -74,7 +74,8 @@ services:
     networks:
         - kargeo-network
 volumes:
-  db_files
+  db_files:
+    external: true
 
 networks:
   kargeo-network:
