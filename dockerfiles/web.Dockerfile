@@ -27,7 +27,7 @@ RUN unzip -qo /kargeotool.war -d /usr/local/tomcat/webapps/kargeotool/
 EXPOSE 8080
 
 COPY  ./dockerfiles/entrypoint/* /
-RUN chmod -R 755 /entrypoint
+
 ENTRYPOINT [ "/entrypoint" ]
 CMD ["tomcat"]
 
