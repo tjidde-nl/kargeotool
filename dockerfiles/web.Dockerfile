@@ -26,7 +26,7 @@ RUN mkdir -p /usr/local/tomcat/webapps/kargeotool/
 RUN unzip -qo /kargeotool.war -d /usr/local/tomcat/webapps/kargeotool/
 EXPOSE 8080
 
-COPY  ./dockerfiles/entrypoint/* /entry/*
+COPY  ./dockerfiles/entrypoint/* /entry/
 
 ENTRYPOINT [ "/entry/entrypoint" ]
 CMD ["tomcat"]
