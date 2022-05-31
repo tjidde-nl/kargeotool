@@ -16,6 +16,7 @@
  */
 package nl.b3p.kar.inform;
 
+
 import java.util.Properties;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletContextEvent;
@@ -54,6 +55,8 @@ public class CarrierInformerListener implements ServletContextListener {
 
         init(sce);
         if (interval.equalsIgnoreCase("-1") || interval == null) {
+            log.error(interval);
+            System.out.println(interval);
             return;
         }
 
