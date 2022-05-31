@@ -22,7 +22,7 @@ services:
     environment:
       POSTGRES_PASSWORD: -@pass@-
   web:
-    image: docker.merkator.com/kargeo/web:1.0.0.5
+    image: docker.merkator.com/kargeo/web:1.0.0.6
     container_name: kargeo-web
     build:
         context: .
