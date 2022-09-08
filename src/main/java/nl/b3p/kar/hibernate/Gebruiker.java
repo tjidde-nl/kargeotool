@@ -60,7 +60,8 @@ public class Gebruiker implements Principal {
     private String email;
     private String phone;
     private String position;
-
+    private String passwordResetCode;
+    
     /**
      * JSON string met profielinstellingen.
      */
@@ -500,4 +501,12 @@ public class Gebruiker implements Principal {
     public String toString(){
         return username + " (" +fullname + ")";
     }
+
+	public String getPasswordResetCode() {
+		return passwordResetCode;
+	}
+
+	public void setPasswordResetCode(String passwordResetCode) {
+		this.passwordResetCode = passwordResetCode;
+	}	
 }
