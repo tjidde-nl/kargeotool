@@ -219,8 +219,8 @@ public class SecurityRealm implements SecurityRealmInterface {
                                 .getSingleResult();
             g.setPasswordResetCode(RandomString(7));
             em.persist(g);          
-            
-                                
+	        PasswordResetTool prt = new PasswordResetTool();
+	        prt.ProcessMail(prt.CreateResetPasswordMessage(g), g);
             return true;                    
         }
         catch(NoResultException nre) {

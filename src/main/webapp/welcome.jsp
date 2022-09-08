@@ -62,7 +62,7 @@
     </p>
     <h1>Over deze applicatie</h1>
     <p>
-        Deze applicatie is ontwikkeld door <a href="http://www.b3partners.nl/" target="_blank">B3Partners</a>.
+        Deze applicatie is in ontwikkeling door <a href="http://www.merkator.com/" target="_blank">Merkator BV</a>.
     </p>
     <p>
         Versie: ${project.version}
