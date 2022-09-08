@@ -477,6 +477,9 @@ public class Gebruiker implements Principal {
             dor.setReadable(readable);
         }
     }
+    public void GenerateNewPasswordCode(String userName){
+        
+    }
 
     /**
      *

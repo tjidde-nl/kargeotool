@@ -207,6 +207,41 @@ public class SecurityRealm implements SecurityRealmInterface {
             Stripersist.requestComplete();
         }
     }
+    
+    public boolean RequestNewPassword(String username){
+        try{
+            Stripersist.requestInit();
+            EntityManager em = Stripersist.getEntityManager();
+            Gebruiker g = (Gebruiker)em.createQuery(
+                                    "from Gebruiker g where " +
+                                    "g.username = :username ")
+                                .setParameter("username", username)
+                                .getSingleResult();
+            g.setPasswordResetCode(RandomString(7));
+            em.persist(g);          
+            
+                                
+            return true;                    
+        }
+        catch(NoResultException nre) {
+        	//auditLog.info(nre);
+            //auditLog.info("geen gebruiker gevonden voor gebruikersnaam");            
+        } 
+        return false;
+    }
+    private String RandomString(int length) {
+    	int leftLimit = 97; // letter 'a'
+        int rightLimit = 122; // letter 'z'
+        int targetStringLength = length;
+        Random random = new Random();
+        StringBuilder buffer = new StringBuilder(targetStringLength);
+        for (int i = 0; i < targetStringLength; i++) {
+            int randomLimitedInt = leftLimit + (int) 
+              (random.nextFloat() * (rightLimit - leftLimit + 1));
+            buffer.append((char) randomLimitedInt);
+        }
+        return buffer.toString();
+    }
 
     /**
      * Er zijn drie rollen, bepaald door het feit of bij een Gebruiker entity

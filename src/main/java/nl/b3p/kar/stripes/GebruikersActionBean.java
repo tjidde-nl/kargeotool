@@ -377,7 +377,7 @@ public class GebruikersActionBean implements ActionBean, ValidationErrorHandler 
                     .setParameter("username", gebruiker.getUsername())
                     .getSingleResult();
         } catch(NoResultException nre) {
-            /* debiele API */
+            /* debiele API */   
         }
         if(bestaandeUsername != null) {
             getContext().getValidationErrors().addGlobalError(new SimpleError("Gebruikersnaam is al in gebruik"));
