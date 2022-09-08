@@ -217,7 +217,7 @@ public class SecurityRealm implements SecurityRealmInterface {
                                     "g.username = :username ")
                                 .setParameter("username", username)
                                 .getSingleResult();
-            g.setPasswordResetCode(RandomString(7));
+            g.setPasswordResetCode(RandomString(7)); 
             em.persist(g);          
 	        PasswordResetTool prt = new PasswordResetTool();
 	        prt.ProcessMail(prt.CreateResetPasswordMessage(g), g);
