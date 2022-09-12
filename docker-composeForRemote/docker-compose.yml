@@ -26,7 +26,7 @@ services:
     volumes:
       - db_files:/var/lib/postgresql/data
   web:
-    image: docker.merkator.com/kargeo/web:1.0.0.6
+    image: docker.merkator.com/kargeo/web:1.0.0.9
     restart: always
     container_name: kargeo-web
     depends_on:

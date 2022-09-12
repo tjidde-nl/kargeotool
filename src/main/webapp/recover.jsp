@@ -5,7 +5,7 @@
     </head>
     <body>
         <h2>Wachtwoord vergeten</h2>
-
+			${actionBean.test}
 		<p>Bent u uw wachtwoord vergeten? Vul uw gebruikersnaam in. Dan mailen wij u met extra informatie.</p>
         <form>
 
