@@ -5,7 +5,9 @@
     </head>
     <body>
         <h2>Wachtwoord vergeten</h2>
-			${actionBean.test}
+        	<stripes:layout-component name="content" beanclass="nl.b3p.kar.stripes.RecoverActionBean">
+				${actionBean.test}
+    		</stripes:layout-component>
 		<p>Bent u uw wachtwoord vergeten? Vul uw gebruikersnaam in. Dan mailen wij u met extra informatie.</p>
         <form>
 
