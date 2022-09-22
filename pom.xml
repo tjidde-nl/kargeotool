@@ -25,6 +25,65 @@
     </properties>
 
     <dependencies>
+    <!-- https://mvnrepository.com/artifact/com.sun.xml.fastinfoset/FastInfoset -->
+	<dependency>
+    	<groupId>com.sun.xml.fastinfoset</groupId>
+    	<artifactId>FastInfoset</artifactId>
+    	<version>1.2.16</version>
+	</dependency>
+<!-- https://mvnrepository.com/artifact/org.glassfish.jaxb/txw2 -->
+	<dependency>
+    	<groupId>org.glassfish.jaxb</groupId>
+    	<artifactId>txw2</artifactId>
+    	<version>2.3.2</version>
+	 </dependency>
+<!-- https://mvnrepository.com/artifact/com.sun.istack/istack-commons-runtime -->
+<dependency>
+    <groupId>com.sun.istack</groupId>
+    <artifactId>istack-commons-runtime</artifactId>
+    <version>3.0.8</version>
+</dependency>
+<!-- https://mvnrepository.com/artifact/org.jvnet.staxex/stax-ex -->
+<dependency>
+    <groupId>org.jvnet.staxex</groupId>
+    <artifactId>stax-ex</artifactId>
+    <version>1.8.1</version>
+</dependency>
+	  <dependency>
+    	<groupId>org.glassfish.jersey.bundles</groupId>
+    	<artifactId>jaxrs-ri</artifactId>
+    	<version>2.30</version>
+  	</dependency>
+  	<dependency>
+    <groupId>org.glassfish.jersey.containers</groupId>
+    <artifactId>jersey-container-servlet</artifactId>
+    <version>2.30</version>
+</dependency>
+<dependency>
+    <groupId>org.glassfish.jersey.inject</groupId>
+    <artifactId>jersey-hk2</artifactId>
+    <version>2.30</version>
+</dependency>
+ <dependency>
+      <groupId>io.swagger.core.v3</groupId>
+      <artifactId>swagger-jaxrs2</artifactId>
+      <version>2.1.2</version>
+    </dependency>
+    <dependency>
+      <groupId>io.swagger.core.v3</groupId>
+      <artifactId>swagger-jaxrs2-servlet-initializer-v2</artifactId>
+      <version>2.1.2</version>
+    </dependency>
+      <dependency>
+            <groupId>javax.el</groupId>
+            <artifactId>javax.el-api</artifactId>
+            <version>3.0.0</version>
+        </dependency>
+        <dependency>
+            <groupId>org.glassfish.web</groupId>
+            <artifactId>javax.el</artifactId>
+            <version>2.2.6</version>
+        </dependency>
         <dependency>    
             <groupId>nl.b3p</groupId>
             <artifactId>b3p-gt2-dxf</artifactId>
@@ -147,6 +206,12 @@
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-c3p0</artifactId>
             <version>${hibernate.version}</version>
+        </dependency>
+          <dependency>
+            <groupId>javax</groupId>
+            <artifactId>javaee-web-api</artifactId>
+            <version>8.0</version>
+            <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>javax.servlet</groupId>

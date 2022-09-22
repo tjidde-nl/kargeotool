@@ -17,7 +17,8 @@
                 <tr><td>Gebruikersnaam:</td><td><input type="text" name="j_username" /></td></tr>
                 <tr><td>Wachtwoord:</td><td><input type="password" name="j_password"/></td></tr>
             </table>
-
+			 <a type="button" href="/kargeotool/recover.html"> Wachtwoord vergeten?</a><br />
+			 <a type="button" href="/kargeotool/recoverAccount.html"> Accountnaam vergeten?</a>
             <p>
             <input type="submit" name="submit" value="Login"/>
         </form>

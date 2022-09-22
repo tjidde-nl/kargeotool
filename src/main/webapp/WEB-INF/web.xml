@@ -1,5 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee
+		 http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
+         version="3.1">
+<!--
 <web-app version="2.4" xmlns="http://java.sun.com/xml/ns/j2ee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd">
+-->
     <!-- Localization context voor o.a. de <fmt:message> JSTL tag -->
     <context-param>
         <param-name>javax.servlet.jsp.jstl.fmt.localizationContext</param-name>
@@ -128,11 +135,23 @@
     </filter-mapping>
 
     <servlet>
+        <servlet-name>Kar_GEO_tool_API</servlet-name>
+        <init-param>
+            <param-name>javax.ws.rs.core.Application</param-name>
+            <param-value>nl.b3p.kar.endpoint.StartUpInit</param-value>
+        </init-param>
+        <load-on-startup>1</load-on-startup>
+        <enabled>true</enabled>
+    </servlet>
+    <servlet>
+    	<servlet-name>javax.ws.rs.core.Application</servlet-name>
+    	<load-on-startup>1</load-on-startup>
+	</servlet>
+    <servlet>
         <servlet-name>StripesDispatcher</servlet-name>
         <servlet-class>net.sourceforge.stripes.controller.DispatcherServlet</servlet-class>
         <load-on-startup>1</load-on-startup>
     </servlet>
-
     <servlet-mapping>
         <servlet-name>StripesDispatcher</servlet-name>
         <url-pattern>*.action</url-pattern>
@@ -145,7 +164,6 @@
         <servlet-name>StripesDispatcher</servlet-name>
         <url-pattern>*.wait</url-pattern>
     </servlet-mapping>
-
     <session-config>
         <session-timeout>
             480

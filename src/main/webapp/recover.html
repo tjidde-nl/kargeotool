@@ -1,0 +1,48 @@
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>Wachtwoord vergeten Kargeotool</title>
+    </head>
+    <body>
+        <h2>Wachtwoord vergeten</h2>
+
+		<p>Bent u uw wachtwoord vergeten? Vul uw gebruikersnaam in. Dan mailen wij u met extra informatie.</p>
+        <form onsubmit="DoPost()" action="#">
+
+            <table>
+                <tr><td>Gebruikersnaam:</td><td><input type="text" required="required" id="username" name="username" autocomplete="off" /></td></tr>               
+            </table>
+
+            <p>
+            <input type="button" onclick="DoPost()" value="Verstuur"/>
+        </form>
+        
+		<a type="button" href="/kargeotool/recoverAccount.html"> Accountnaam vergeten?</a>
+        <script type="text/javascript">
+            window.onload = function() {
+                document.forms[0].username.focus();
+            }
+           function DoPost(){
+           		
+         		var username = document.getElementById("username").value;
+				if (!username){
+					alert("Do not call the function directly!"); 
+  					return;
+  				}  
+  				const url ='/kargeotool/api/password/requestNewPassword/';
+  				
+    				const request = fetch(url, {
+        				method: 'POST',        			
+        				cache: 'no-cache', 
+        				headers: {
+            				'Accept': 'application/json',
+            				'Content-Type': 'application/json'
+       					 	},
+        				body: username}).then((response) =>  window.location.replace("/kargeotool/RecoverRequested.html"));				
+					
+										
+				}
+			
+        </script>
+    </body>
+</html>

@@ -1,0 +1,49 @@
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>Wachtwoord herstellen Kargeotool</title>
+    </head>
+    <body>
+        <h2>Wachtwoord herstellen</h2>
+
+		<p>Tekst nog verzinnen!</p>
+        <form onsubmit="return false;" method="post" name="myForm" >
+
+            <table>
+              
+				<tr><td>Nieuw Wachtwoord:</td><td><input type="password" id="newPassword" autocomplete="off" /></td></tr>               
+				<tr><td>Herhaal Nieuw wachtwoord:</td><td><input type="password" id="newPasswordRepeat"  autocomplete="off" /></td></tr>               
+            </table>
+
+            <p>
+            <input type="submit" name="submit" onclick="DoPost()" value="Verander wachtwoord"/>
+        </form>
+		
+        <script type="text/javascript">
+           function DoPost(){         
+           var newPassword = document.getElementById("newPassword").value;
+           const urlParams = new URLSearchParams(window.location.search);           
+           var resetToken =  urlParams.get('resetToken').replace(/['"]+/g, '');
+           
+           	if(newPassword != document.getElementById("newPasswordRepeat").value){
+       				alert("Wachtwoorden komen niet overeen");   
+       				return;        		
+           		}
+           	if(!resetToken){return;}
+           		const url ='/kargeotool/api/password/ChangePasswordRecover/'+resetToken;  				
+    				const request = fetch(url, {
+        				method: 'POST',        			
+        				cache: 'no-cache', 
+        				headers: {
+            				'Accept': 'application/json',
+            				'Content-Type': 'application/json'
+       					 	},
+        				body: newPassword}).then((response) =>  window.location.replace("/kargeotool/RecoverSuccess.html"));				
+					
+				}
+           			
+          
+          
+        </script>
+    </body>
+</html>

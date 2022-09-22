@@ -19,10 +19,9 @@ public class PasswordResetTool {
 		try {
 			context = new InitialContext();
 			Context xmlNode = (Context) context.lookup("java:comp/env");
-			fromAddress = (String) xmlNode.lookup("PARAM_INFORM_ADMINS_FROMADDRESS");
+			fromAddress = "ovdata@dova.nu";
   
 		} catch (NamingException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		   
@@ -40,13 +39,14 @@ public class PasswordResetTool {
 		return CreateBodyResetPassword(g.getPasswordResetCode());
 	}
 	private String CreateBodyResetPassword(String resetCode) {
+		String url = "acc.kargeotool.nl/kargeotool/recover2.html?resetToken="+ resetCode;
 		String body = "";
-		body += "Beste, \n";
-        body += "\n";
-        body += "Er is op voor uw account bij de Kar GEO tool een verzoek gedaan om voor een nieuw wachtwoord. \n";
-        body += "Hiervoor heeft u de volgende code nodig om dit te valideren\n\n";
-        body += resetCode;
-        body += "\n\n Ga naar <a href=\"kargeotool.nl/recover2.jsp\">Kargeotool.nl/recover2.jsp</a>om uw wachtwachtwoord te resetten\n\n";        	
+		body += "Beste, <br/>";
+        body += "<br/>";
+        body += "Er is op voor uw account bij de Kar GEO tool een verzoek gedaan om voor een nieuw wachtwoord. <br/>";
+        body += "Klik op onderstaande link om uw wachtwoord te resetten. Mocht de link niet werken kopieer deze link in uw browser.<br/><br/>";        
+        body += "<br/> Ga naar <a href=\""+url+"\">"+url+"</a> om uw wachtwachtwoord te resetten<br/><br/>";     
+        body += "Heeft u geen aanvraag gedaan voor een nieuw wachtwoord? Neem contact op Dova, vraag een nieuw wachtwoord aan via <a href=\"kargeotool.nl\">kargeotool.nl</a>.";
         body += "Met vriendelijke groet";
 		return body;
 	}

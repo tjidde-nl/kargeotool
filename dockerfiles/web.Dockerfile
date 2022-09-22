@@ -6,11 +6,14 @@ VOLUME /root/.m2
 RUN apk add maven
 
 #Git
-RUN apk add git
+#RUN apk add git
 RUN mkdir /kar
-RUN git clone https://github.com/tjidde-nl/kargeotool.git /kar
 
-RUN mvn -f /kar clean install -q
+
+COPY ../ /kar
+
+RUN ls -lR
+RUN mvn -f /kar  install  -e -q
 
 #Create TOMCAT
 FROM tomcat:9.0-alpine
@@ -18,7 +21,10 @@ FROM tomcat:9.0-alpine
 LABEL maintainer='Tjidde.Nieuwenhuizen@merkator.com'
 COPY --from=builder $HOME/kar/target/* /
 COPY ./EXT_Files/jar/* lib/
-COPY ./EXT_Files/context/* conf/
+COPY ./EXT_Files/context/* conf/ 
+#COPY --from=builder $HOME/kar/fiets/tomcat-users.xml webapps/host-manager/META-INF/
+#COPY --from=builder $HOME/kar/fiets/context.xml conf/
+
 EXPOSE 8080
 
 

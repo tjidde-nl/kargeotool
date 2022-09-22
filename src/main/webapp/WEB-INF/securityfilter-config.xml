@@ -40,7 +40,7 @@
 	 <security-constraint>
         <web-resource-collection>
             <web-resource-name>recover</web-resource-name>
-            <url-pattern>/recover/*</url-pattern>
+            <url-pattern>/API/*</url-pattern>
             <http-method>POST</http-method>
             <http-method>GET</http-method>
         </web-resource-collection>
