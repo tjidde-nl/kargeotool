@@ -32,7 +32,7 @@ services:
     container_name: kargeo-web
     build:
         context: .
-        dockerfile: ./dockerfiles/web.Dockerfile
+        dockerfile: ./web.Dockerfile
     ports:      
       - "8080:8080"
     volumes:
