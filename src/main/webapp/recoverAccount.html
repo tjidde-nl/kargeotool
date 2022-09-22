@@ -1,0 +1,49 @@
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>Gebruikersnaam vergeten Kargeotool</title>
+    </head>
+    <body>   
+    <h2>Gebruikersnaam vergeten</h2>
+
+		<p>Bent u uw gebruikersnaam vergeten? Vul uw email in. Dan mailen wij u met extra informatie.</p>
+        <form>
+
+            <table>
+                <tr><td>email:</td><td><input type="text" name="email" id="email" autocomplete="off" /></td></tr>               
+            </table>
+
+            <p>
+            <input type="button" name="submit" onclick="DoPost()" value="Verstuur"/>
+        </form>
+		 <a type="button" href="/kargeotool/recover.html"> Wachtwoord vergeten?</a>
+		
+        <script type="text/javascript">
+            window.onload = function() {
+                document.forms[0].email.focus();
+            }
+             function DoPost(){
+           		
+         		var email = document.getElementById("email").value;
+				if (!email){
+					alert("Do not call the function directly!"); 
+  					return;
+  				}  
+  				const url ='/kargeotool/api/username/requestAllUsernamesEmail/';
+  				
+    				const request = fetch(url, {
+        				method: 'POST',        			
+        				cache: 'no-cache', 
+        				headers: {
+            				'Accept': 'application/json',
+            				'Content-Type': 'application/json'
+       					 	},
+        				body: email}).then((response) => window.location.replace("/kargeotool/RecoverRequested.html"));				
+					
+										
+				}
+			
+        </script>
+    </body>
+</html>
+    

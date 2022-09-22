@@ -27,6 +27,7 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.security.Principal;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Random;
 import java.util.Set;
 import javax.persistence.EntityManager;
@@ -58,7 +59,7 @@ public class SecurityRealm implements SecurityRealmInterface {
 
     private static final Log auditLog = LogFactory.getLog("audit");
     
-    private static final int SALT_SIZE = 4;
+    private static final int SALT_SIZE = 64;
 
     /**
      * Methode om random salt tbv hash te genereren
@@ -70,18 +71,22 @@ public class SecurityRealm implements SecurityRealmInterface {
         long seed = System.currentTimeMillis();
         long ip = 1;
         try {
-            InetAddress addr = InetAddress.getByName(request.getRemoteAddr());
-            if(addr instanceof Inet4Address) {
-                byte raw[] = ((Inet4Address)addr).getAddress();
-                ip = raw[0] << 24 | raw[1] << 16 | raw[2] << 8 | raw[3];
+        	ip = new Random().nextInt();
+        	if(request!=null) {
+        		InetAddress addr = InetAddress.getByName(request.getRemoteAddr());
+        		if(addr instanceof Inet4Address) {
+        			byte raw[] = ((Inet4Address)addr).getAddress();
+        			ip = raw[0] << 24 | raw[1] << 16 | raw[2] << 8 | raw[3];
+        		}
             }
         } catch (UnknownHostException ex) {
             /* ip blijft 1 */
         }
         seed = seed * ip;
-        if(request.getRemotePort() != 0) {
-            seed = seed * request.getRemotePort();
-        }
+        seed = seed * new Random().nextInt();
+		/*
+		 * if(request.getRemotePort() != 0) { seed = seed * request.getRemotePort(); }
+		 */
         Random random = new Random(seed);
         StringBuilder salt = new StringBuilder(SALT_SIZE*2);
         for(int i = 0; i < SALT_SIZE; i++) {
@@ -207,8 +212,41 @@ public class SecurityRealm implements SecurityRealmInterface {
             Stripersist.requestComplete();
         }
     }
-    
-    public boolean RequestNewPassword(String username){
+    //
+     public Gebruiker GetGebruikerRecoveryCode(String uid){
+         try{
+             Stripersist.requestInit();
+             EntityManager em = Stripersist.getEntityManager();
+             Gebruiker g = (Gebruiker)em.createQuery(
+                                     "from Gebruiker g where " +
+                                     "g.passwordResetCode = :uid ")
+                                 .setParameter("uid", uid)
+                                 .getSingleResult();            
+             return g;           
+         }
+         catch(NoResultException nre) {
+         	return null;      
+         } 
+         
+     }
+     public List<Gebruiker> GetGebruikersEmail(String email){
+         try{
+             Stripersist.requestInit();
+             EntityManager em = Stripersist.getEntityManager();
+             @SuppressWarnings("unchecked")
+             List<Gebruiker>g = (List<Gebruiker>) em.createQuery(
+                                     "from Gebruiker g where " +
+                                     "g.email = :email ")
+                                 .setParameter("email", email).getResultList();
+                                      
+             return g;           
+         }
+         catch(NoResultException nre) {
+         	return null;      
+         } 
+         
+     }
+    public Gebruiker GetGebruikerUsername(String username){
         try{
             Stripersist.requestInit();
             EntityManager em = Stripersist.getEntityManager();
@@ -216,18 +254,22 @@ public class SecurityRealm implements SecurityRealmInterface {
                                     "from Gebruiker g where " +
                                     "g.username = :username ")
                                 .setParameter("username", username)
-                                .getSingleResult();
-            g.setPasswordResetCode(RandomString(7)); 
-            em.persist(g);          
-	        PasswordResetTool prt = new PasswordResetTool();
-	        prt.ProcessMail(prt.CreateResetPasswordMessage(g), g);
-            return true;                    
+                                .getSingleResult();            
+            return g;           
         }
         catch(NoResultException nre) {
-        	//auditLog.info(nre);
-            //auditLog.info("geen gebruiker gevonden voor gebruikersnaam");            
+        	auditLog.error(nre);
+        	auditLog.error(username);
+            auditLog.error("geen gebruiker gevonden voor gebruikersnaam");            
         } 
-        return false;
+        return null;
+    }
+    public Gebruiker SetRecoveryCode(Gebruiker g) {
+        EntityManager em = Stripersist.getEntityManager();
+        g.setPasswordResetCode(RandomString(128));
+        em.persist(g);
+        em.getTransaction().commit();
+        return g;
     }
     private String RandomString(int length) {
     	int leftLimit = 97; // letter 'a'
@@ -251,6 +293,12 @@ public class SecurityRealm implements SecurityRealmInterface {
      * @param role de gevraagde rol
      * @return boolean of rol geldig is
      */
+    public boolean UpdateGebruiker(Gebruiker g) {
+	   EntityManager em = Stripersist.getEntityManager();
+	   em.persist(g);
+       em.getTransaction().commit();
+       return true;
+    }
     public boolean isUserInRole(Principal principal, String role) {
         if(principal == null) {
             return false;

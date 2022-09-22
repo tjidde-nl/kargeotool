@@ -21,25 +21,12 @@ services:
       dockerfile: ./dockerfiles/postgis.Dockerfile
     environment:
       POSTGRES_PASSWORD: -@pass@-
-    ports:
-        - "127.0.0.1:5432:5432"
-    volumes:
-      - db_files:/var/lib/postgresql/data
-    networks:
-      - kargeo-network   	
   web:
-    image: docker.merkator.com/kargeo/web:1.0.0.10
+    image: docker.merkator.com/kargeo/web:1.0.0.6
     container_name: kargeo-web
     build:
         context: .
         dockerfile: ./dockerfiles/web.Dockerfile
-    ports:      
-      - "8080:8080"
-    volumes:
-      - tomuserData:/usr/local/tomcat/conf/
-      - contextData:/usr/local/tomcat/webapps/manager/META-INF/
-    networks:
-      - kargeo-network
   geoserver:
     image: docker.merkator.com/kargeo/geoserver:1.0
     container_name: kargeo-geoserver
@@ -59,18 +46,18 @@ services:
         context: .
         dockerfile: ./dockerfiles/proxy.Dockerfile  
     volumes:
-      - ./certbot/www:/var/www/certbot/:ro
-      - ./certbot/conf/:/etc/nginx/ssl/:ro
+        - certbot_horus_volume/www:/var/www/certbot/:ro
+        - certbot_horus_volume/conf/:/etc/nginx/ssl/:ro 
   certbot:
-    image: docker.merkator.com/kargeo/certbot:1.0
+    image: docker.merkator.com/horuswp/certbot:1.0
     build: 
       context: .
       dockerfile: ./dockerfiles/certbot.Dockerfile
     networks:
       - kargeo-network    
     volumes:
-      - ./certbot/www/:/var/www/certbot/:rw
-      - ./certbot/conf/:/etc/letsencrypt/:rw
+      - certbot_horus_volume/www:/var/www/certbot/:rw
+      - certbot_horus_volume/conf:/etc/letsencrypt/:rw
 
   mail:
     image: docker.merkator.com/kargeo/smtp:1.0
@@ -84,11 +71,7 @@ services:
 volumes:
   db_files:
     external: true
-  contextData:
-    external: true
-  tomuserData:
-    external: true
+
 networks:
   kargeo-network:
     driver: bridge
-    
