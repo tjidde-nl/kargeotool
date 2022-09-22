@@ -10,7 +10,7 @@ RUN apk add maven
 RUN mkdir /kar
 
 
-COPY ../ /kar
+COPY ./ /kar
 
 RUN ls -lR
 RUN mvn -f /kar  install  -e -q
