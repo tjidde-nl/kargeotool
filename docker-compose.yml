@@ -26,7 +26,7 @@ services:
     volumes:
       - db_files:/var/lib/postgresql/data
     networks:
-      - kargeo-network   	
+      - kargeo-network
   web:
     image: docker.merkator.com/kargeo/web:1.0.0.10
     container_name: kargeo-web
