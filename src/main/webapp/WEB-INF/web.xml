@@ -133,20 +133,16 @@
         <servlet-name>StripesDispatcher</servlet-name>
         <dispatcher>REQUEST</dispatcher>
     </filter-mapping>
-
     <servlet>
         <servlet-name>Kar_GEO_tool_API</servlet-name>
+         <servlet-class>com.ibm.websphere.jaxrs.server.IBMRestServlet</servlet-class>
         <init-param>
             <param-name>javax.ws.rs.core.Application</param-name>
-            <param-value>nl.b3p.kar.endpoint.StartUpInit</param-value>
+            <param-value>nl.b3p.kar.endpoint.JAXRSApplication</param-value>
         </init-param>
         <load-on-startup>1</load-on-startup>
         <enabled>true</enabled>
     </servlet>
-    <servlet>
-    	<servlet-name>javax.ws.rs.core.Application</servlet-name>
-    	<load-on-startup>1</load-on-startup>
-	</servlet>
     <servlet>
         <servlet-name>StripesDispatcher</servlet-name>
         <servlet-class>net.sourceforge.stripes.controller.DispatcherServlet</servlet-class>

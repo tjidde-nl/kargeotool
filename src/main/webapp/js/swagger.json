@@ -1,0 +1,157 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "kargeotool",
+    "description": "",
+    "termsOfService": "http://swagger.io/terms/",
+    "contact": {
+      "email": "support@merkator.com"
+    },
+    "license": {
+      "name": "Apache 2.0",
+      "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+    },
+    "version": "1.0.0.11"
+  },
+  "servers": [
+    {
+      "url": "/kargeotool/api/"
+    }
+  ],
+  "tags": [
+    {
+      "name": "Password",
+      "description": "Requires for password resets"
+    },
+    {
+      "name": "Username",
+      "description": "Requires for username lookups"
+    }
+  ],
+  "paths": {
+    "/username/requestAllUsernamesEmail": {
+      "summary": "For all Username related calls",
+      "post": {
+        "summary": "Request a username lookup",
+        "description": "Request for username lookup based on email given, this will send a the user an email if found with all usernames that are bound to email",
+        "operationId": "requestAllUsernamesEmail",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/email"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful operation"
+          }
+        },
+        "tags": [
+          "Username"
+        ]
+      }
+    },
+    "/password/requestNewPassword": {
+      "summary": "For all password related calls",
+      "post": {
+        "summary": "Request a password reset",
+        "description": "Request for password reset which will send a email to the email behind username",
+        "operationId": "requestNewPassword",
+        "requestBody": {
+          "description": "Your username to request a new password",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/username"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful operation"
+          }
+        },
+        "tags": [
+          "Password"
+        ]
+      }
+    },
+    "/password/ChangePasswordRecover/{uid}": {
+      "post": {
+        "tags": [
+          "Password"
+        ],
+        "summary": "reset password with uid",
+        "description": "resets the password of an user, the uid is checked. Send newPassword in the body",
+        "operationId": "ChangePasswordRecovery",
+        "requestBody": {
+          "description": "Your new password to change it",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/password"
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "uid",
+            "in": "path",
+            "description": "string ID you get in email via path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "400": {
+            "description": "Invalid ID supplied"
+          }
+        }
+      }
+    },
+    "/password": {
+      "get": {
+        "tags": [
+          "Password"
+        ],
+        "summary": "Endpoint to test is API is running",
+        "description": "resets the password of an user, the uid is checked. Send newPassword as json in the body",
+        "operationId": "GetPassword",
+        "responses": {
+          "200": {
+            "description": "Why you do this? You can't get your password..."
+          },
+          "404": {
+            "description": "Service not running"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "username": {
+        "type": "string",
+        "example": "username01"
+      },
+      "email": {
+        "type": "string",
+        "example": "john@doe.nl"
+      },
+      "password": {
+        "type": "string",
+        "example": "NSY#brYmyL"
+      }
+    }
+  }
+}

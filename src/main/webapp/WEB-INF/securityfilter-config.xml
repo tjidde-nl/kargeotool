@@ -36,15 +36,7 @@
         <auth-constraint>
             <role-name>beheerder</role-name>
         </auth-constraint>
-    </security-constraint>
-	 <security-constraint>
-        <web-resource-collection>
-            <web-resource-name>recover</web-resource-name>
-            <url-pattern>/API/*</url-pattern>
-            <http-method>POST</http-method>
-            <http-method>GET</http-method>
-        </web-resource-collection>
-    </security-constraint>
+    </security-constraint>	 
     <login-config>
         <!-- Zet op BASIC en commentarieer <form-login-config> voor debuggen met veel reloads -->
         <auth-method>FORM</auth-method>
