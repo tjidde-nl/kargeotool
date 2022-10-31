@@ -15,14 +15,14 @@ public class UsernameRequestTool {
 	}
 	private String CreateBody(List<Gebruiker> users) {
 		String body = "Beste lezer, <br/><br/>";
-		body+= "U heeft aanvraag gedaan voor de gebruikersnamen dat op uw emailadres geregistreerd staan.<br/><br/>";
-		body+= "De volgende gebruikersnamen zijn gevonden;<br/>";
+		body+= "U heeft een aanvraag gedaan voor de gebruikersnaam of gebruikersnamen die dat op uw mailadres geregistreerd staan staan met betrekking tot uw account voor de KAR Geo Too.<br/><br/>";
+		body+= "De volgende gebruikersnamen zijn gevonden:<br/>";
 		for (Gebruiker gebruiker : users) {
 			body+= "- "+ gebruiker.getUsername()+"<br/>";
 		}
 		body += "<br/>";
 		body += "Met vriendelijke groet,<br/>";
-		body += "Dova team KarGeoTool";
+		body += "DOVA";
 		return body;
 	}
 }

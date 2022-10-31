@@ -236,7 +236,7 @@ public class SecurityRealm implements SecurityRealmInterface {
              @SuppressWarnings("unchecked")
              List<Gebruiker>g = (List<Gebruiker>) em.createQuery(
                                      "from Gebruiker g where " +
-                                     "g.email = :email ")
+                                     "lower(g.email) = :email ")
                                  .setParameter("email", email).getResultList();
                                       
              return g;           
@@ -252,7 +252,7 @@ public class SecurityRealm implements SecurityRealmInterface {
             EntityManager em = Stripersist.getEntityManager();
             Gebruiker g = (Gebruiker)em.createQuery(
                                     "from Gebruiker g where " +
-                                    "g.username = :username ")
+                                    "lower(g.username) = :username ")
                                 .setParameter("username", username)
                                 .getSingleResult();            
             return g;           
