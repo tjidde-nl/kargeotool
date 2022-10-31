@@ -30,7 +30,7 @@ public class UsernameEndpoint {
 	    @ApiResponse(code=200, message="true")
 	  })
 	public boolean RequestNewPassword(String email) {
-		urt.SendAllUserNames(sr.GetGebruikersEmail(email));
+		urt.SendAllUserNames(sr.GetGebruikersEmail(email.toLowerCase().trim()));
 		return true;
 	}
 }
