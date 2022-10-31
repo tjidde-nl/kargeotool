@@ -20,12 +20,12 @@ public class PasswordEndpoint {
 	private SecurityRealm sr = new SecurityRealm();
 	@POST
 	@Path("requestNewPassword")
-	 @ApiOperation(value = "requests a password reset email bound to username")
-	 @ApiResponses({
+	@ApiOperation(value = "requests a password reset email bound to username")
+	@ApiResponses({
 	    @ApiResponse(code=200, message="username")
 	  })
 	public String RequestNewPassword(String username) {
-		Gebruiker g = sr.GetGebruikerUsername(username);
+		Gebruiker g = sr.GetGebruikerUsername(username.toLowerCase().trim());
 		if(g==null)return "No User:"+username;
 		g = sr.SetRecoveryCode(g);
 		String body = prt.CreateResetPasswordMessage(g);
