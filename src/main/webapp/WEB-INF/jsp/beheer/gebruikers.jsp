@@ -58,20 +58,20 @@
                             <table style="font-size: 8pt">
                                 <tr>
                                     <td><fmt:message key="gebruiker.username"/></td>
-                                    <td><stripes-dynattr:text name="gebruiker.username" size="20" autocomplete="off" data-lpignore="true" data-form-type="other"  autofocus="true"/></td>
+                                    <td><stripes-dynattr:text name="gebruiker.username" size="20" autocomplete="do-not-autofill" data-lpignore="true" data-form-type="other"  autofocus="true"/></td>
                                 </tr>
                                 <tr>
                                     <td><fmt:message key="gebruiker.fullName"/></td>
-                                    <td><stripes-dynattr:text name="gebruiker.fullname" autocomplete="off" data-lpignore="true" data-form-type="other"  size="30" /></td>
+                                    <td><stripes-dynattr:text name="gebruiker.fullname" autocomplete="do-not-autofill" data-lpignore="true" data-form-type="other"  size="30" /></td>
                                 </tr>
                                 <tr>
                                     <td><fmt:message key="gebruiker.email"/></td>
-                                    <td><stripes-dynattr:text name="gebruiker.email" size="30"  autocomplete="off" data-lpignore="true" data-form-type="other"   type="email"/></td>
+                                    <td><stripes-dynattr:text name="gebruiker.email" size="30"  autocomplete="do-not-autofill" data-lpignore="true" data-form-type="other"   type="email"/></td>
                                 </tr>
                                 <tr>
                                     <td><fmt:message key="gebruiker.password"  /></td>
                                     <td>
-                                        <stripes-dynattr:password name="password"  autocomplete="off" data-lpignore="true" data-form-type="other"  size="20"/>
+                                        <stripes-dynattr:password name="password"  autocomplete="do-not-autofill" data-lpignore="true" data-form-type="other"  size="20"/>
                                     </td>
                                 </tr>
                                 <c:if test="${actionBean.gebruiker.id != null}">
