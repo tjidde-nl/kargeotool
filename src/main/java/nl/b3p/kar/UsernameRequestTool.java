@@ -21,6 +21,7 @@ public class UsernameRequestTool {
 			body+= "- "+ gebruiker.getUsername()+"<br/>";
 		}
 		body += "<br/>";
+		body += "Heeft u geen aanvraag gedaan voor uw gebruikersnamen, neem dan contact op met DOVA via <a href=\"mailto:ovdata@dova.nu?subject=Account%20herstel%20vraag.\">ovdata@dova.nu</a>. <br /><br />";
 		body += "Met vriendelijke groet,<br/><br/>";
 		body += "DOVA";
 		return body;
