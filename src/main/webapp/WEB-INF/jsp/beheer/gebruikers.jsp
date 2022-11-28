@@ -71,7 +71,7 @@
                                 <tr>
                                     <td><fmt:message key="gebruiker.password"  /></td>
                                     <td>
-                                        <stripes-dynattr:password name="password"  autocomplete="do-not-autofill" data-lpignore="true" data-form-type="other"  size="20"/>
+                                        <stripes-dynattr:password name="text" style="-webkit-text-security: disc !important;"  autocomplete="do-not-autofill" data-lpignore="true" data-form-type="other"  size="20"/>
                                     </td>
                                 </tr>
                                 <c:if test="${actionBean.gebruiker.id != null}">
