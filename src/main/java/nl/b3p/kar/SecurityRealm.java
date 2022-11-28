@@ -59,7 +59,7 @@ public class SecurityRealm implements SecurityRealmInterface {
 
     private static final Log auditLog = LogFactory.getLog("audit");
     
-    private static final int SALT_SIZE = 256;
+    private static final int SALT_SIZE = 126;
 
     /**
      * Methode om random salt tbv hash te genereren
