@@ -8,12 +8,13 @@ import javax.naming.NamingException;
 import org.quartz.JobExecutionContext;
 import org.quartz.JobExecutionException;
 
+import net.sourceforge.stripes.action.ActionBeanContext;
 import nl.b3p.kar.hibernate.Gebruiker;
 
 public class PasswordResetTool {
 	
 	private String fromAddress;
-
+	private ActionBeanContext context;
 	public PasswordResetTool() {
 		InitialContext context;
 		try {
@@ -39,7 +40,8 @@ public class PasswordResetTool {
 		return CreateBodyResetPassword(g.getPasswordResetCode());
 	}
 	private String CreateBodyResetPassword(String resetCode) {
-		String url = "acc.kargeotool.nl/kargeotool/recover2.html?resetToken="+ resetCode;
+		String url = context.getServletContext().getInitParameter("application-url");
+		url += "/recover2.html?resetToken="+ resetCode;
 		String body = "";
 		body += "Beste lezer, <br/>";
         body += "<br/>";
