@@ -28,7 +28,7 @@ services:
     networks:
       - kargeo-network
   web:
-    image: docker.merkator.com/kargeo/web:1.0.0.18
+    image: docker.merkator.com/kargeo/web:1.0.0.19
     container_name: kargeo-web
     build:
         context: .

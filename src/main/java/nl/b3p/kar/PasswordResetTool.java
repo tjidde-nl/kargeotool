@@ -40,7 +40,7 @@ public class PasswordResetTool {
 		return CreateBodyResetPassword(g.getPasswordResetCode());
 	}
 	private String CreateBodyResetPassword(String resetCode) {
-		String url = context.getServletContext().getInitParameter("application-url");
+		String url = "kargeotool.nl/kargeotool";
 		url += "/recover2.html?resetToken="+ resetCode;
 		String body = "";
 		body += "Beste lezer, <br/>";
