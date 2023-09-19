@@ -61,7 +61,8 @@ public class Mailer {
         msg.setSubject(subject);
         msg.setSentDate(new Date());
         msg.setContent(mailContent,  "text/html; charset=utf-8");
-
+        System.out.println(msg);
+        System.out.println(replyTo);
         Transport.send(msg);
     }       
     /**
@@ -105,7 +106,8 @@ public class Mailer {
 
         // Send the complete message parts
         msg.setContent(multipart);
-         
+        System.out.println(msg);
+        System.out.println(replyTo);
         Transport.send(msg);
     }
 }
