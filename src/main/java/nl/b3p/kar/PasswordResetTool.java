@@ -29,7 +29,7 @@ public class PasswordResetTool {
 	}
 	public boolean ProcessMail(String body,Gebruiker g) {
 		try {
-			Mailer.sendMail("KarGeoTool", fromAddress, "Wachtwoord reset", body, g.getEmail());
+			Mailer.sendMail("KarGeoTool", fromAddress, "Wachtwoord reset", body,"ovdata@dova.nu","DOVA Support", g.getEmail());
 			return true;
 		} catch (Exception e) {
 			e.printStackTrace();

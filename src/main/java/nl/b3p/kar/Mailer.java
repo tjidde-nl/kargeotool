@@ -44,10 +44,14 @@ public class Mailer {
         return session;
     }
     
-    public static void sendMail(String fromName, String fromEmail, String subject, String mailContent, String... emailaddresses) throws Exception {
+    public static void sendMail(String fromName, String fromEmail, String subject, String mailContent,String replyTo,String replyName, String... emailaddresses) throws Exception {
         
         Address from = new InternetAddress(fromEmail, fromName);
         MimeMessage msg = new MimeMessage(getMailSession());
+        if(!replyTo.isEmpty()){
+            Address replyToAddress = new InternetAddress(replyTo,replyName);
+            msg.setReplyTo(new Address[]{replyToAddress});
+        }
         msg.setFrom(from);
         for (String addr : emailaddresses) {
             if(addr != null && !addr.isEmpty()){
@@ -71,11 +75,16 @@ public class Mailer {
      * @param filename Give that attachment a naem.
      * @throws Exception if any
      */
-    public static void sendMail(String fromName, String fromEmail, String email, String subject, String mailContent, File attachment, String filename) throws Exception {
+    public static void sendMail(String fromName, String fromEmail, String email, String subject, String mailContent, File attachment, String filename,String replyTo,String replyName) throws Exception {
     
         Address from = new InternetAddress(fromEmail, fromName);
+
         Message msg = new MimeMessage(getMailSession());
         msg.setFrom(from);
+        if(!replyTo.isEmpty()){
+            Address replyToAddress = new InternetAddress(replyTo,replyName);
+            msg.setReplyTo(new Address[]{replyToAddress});
+        }
         msg.addRecipient(Message.RecipientType.TO, new InternetAddress(email));
         msg.setSubject(subject);
         msg.setSentDate(new Date());        

@@ -150,7 +150,7 @@ public class ExportCreatorThread extends Thread {
     
     private void sendMail(String body){
         try {
-            Mailer.sendMail("KAR Geo Tool", fromAddress, "[KAR Geo Tool] Uw export staat klaar", body, gebruiker.getEmail());
+            Mailer.sendMail("KAR Geo Tool", fromAddress, "[KAR Geo Tool] Uw export staat klaar", body,"","", gebruiker.getEmail());
         } catch (Exception ex) {
             Logger.getLogger(ExportCreatorThread.class.getName()).log(Level.SEVERE, null, ex);
         }

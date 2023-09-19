@@ -8,7 +8,7 @@ public class UsernameRequestTool {
 	public void SendAllUserNames(List<Gebruiker> users) {
 		String body = CreateBody(users);
 		try {
-			Mailer.sendMail("KarGeoTool", "noreply@dova.nu", "Opvragen gebruikersnamen", body, users.get(0).getEmail());
+			Mailer.sendMail("KarGeoTool", "noreply@dova.nu", "Opvragen gebruikersnamen", body,"ovdata@dova.nu","DOVA Support", users.get(0).getEmail());
 		} catch (Exception e) {			
 			e.printStackTrace();
 		}
