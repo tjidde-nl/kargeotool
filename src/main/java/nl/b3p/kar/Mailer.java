@@ -48,7 +48,7 @@ public class Mailer {
         
         Address from = new InternetAddress(fromEmail, fromName);
         MimeMessage msg = new MimeMessage(getMailSession());
-        if(!replyTo.isEmpty()){
+        if(replyTo.length() > 5){
             Address replyToAddress = new InternetAddress(replyTo,replyName);
             msg.setReplyTo(new Address[]{replyToAddress});
         }
