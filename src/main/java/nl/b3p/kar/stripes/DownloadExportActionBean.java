@@ -86,7 +86,6 @@ public class DownloadExportActionBean implements ActionBean {
                     } finally {
                         if (fis != null) {
                             fis.close();
-                            f.delete();
                         }
                     }
                 }
