@@ -70,7 +70,7 @@ public class CarrierInformer implements Job {
                 String body = getBody(inform, appUrl);
                 String informerMail = inform.getAfzender().getEmail() != null ? inform.getAfzender().getEmail() : null;
                 try {
-                    Mailer.sendMail("KAR Geo Tool", fromAddress, subject, body, to,informerMail);
+                    Mailer.sendMail("KAR Geo Tool", fromAddress, subject, body,informerMail,"", to,informerMail);
                     inform.setMailSent(true);
                 } catch (Exception ex) {
                     log.error("Cannot send inform message:", ex);

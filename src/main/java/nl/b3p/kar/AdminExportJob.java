@@ -70,7 +70,7 @@ public class AdminExportJob implements Job {
             
             List<List<String>> values = ExportActionBean.getExportValues(dos, em);
             f = ExportActionBean.getAdminExport(values);
-            Mailer.sendMail("KAR Geo Tool", fromAddress, toAddress, "[KAR Geo Tool] Nieuw beheerders overzicht voor " + sdf.format(d), body,f, "Beheerdersoverzicht " + sdf.format(d) +".csv");
+            Mailer.sendMail("KAR Geo Tool", fromAddress, toAddress, "[KAR Geo Tool] Nieuw beheerders overzicht voor " + sdf.format(d), body,f, "Beheerdersoverzicht " + sdf.format(d) +".csv","","");
         } catch (AddressException ex) {
             log.error("Cannot send inform message:", ex);
         } catch (MessagingException ex) {
