@@ -403,7 +403,7 @@ Ext.onReady(function (){
                     }
                 }
             },{
-                xtype: "panel",
+                xtype: "label",
                 fieldLabel: "Een xml-export voor voertuigtype HD bevat de VRI's waar HD-punten aan zijn gekoppeld, " +
                     "een xml-export voor voertuigtype OV bevat de VRI's waar OV-punten aan zijn gekoppeld.",
                 displayField : 'label',
