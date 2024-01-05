@@ -1,1 +1,0 @@
-insert into data_owner (code, classificatie, omschrijving) values ('INCAA', 'Integrator', 'INCAA Computers');
