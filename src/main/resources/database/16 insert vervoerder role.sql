@@ -1,1 +1,0 @@
-insert into role (id, role) values (3, 'vervoerder');
