@@ -56,7 +56,7 @@
        auth="Container"
        type="javax.mail.Session"
        mail.smtp.host="kargeo-mail"
-       mail.from="ovdata@dova.nu"
+       mail.from="noreply@dova.nu"
      />
 
 </Context>
