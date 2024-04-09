@@ -408,7 +408,9 @@ Ext.onReady(function (){
                     "een xml-export voor voertuigtype OV bevat de VRI's waar OV-punten aan zijn gekoppeld.",
                 displayField : 'label',
                 name: "extraInformatie",
-
+                layout : {
+                    width : 150
+                }
 
             },
             {
@@ -423,11 +425,11 @@ Ext.onReady(function (){
                         },
                         {
                             "type" : "Hulpdiensten",
-                            "label" : "HD"
+                            "label" : "HD, bevat de VRI's waar HD-punten aan zijn gekoppeld."
                         },
                         {
                             "type" : "OV",
-                            "label" : "OV"
+                            "label" : "OV, bevat de VRI's waar OV-punten aan zijn gekoppeld."
                         }
                     ]
                 }),
