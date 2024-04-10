@@ -421,15 +421,15 @@ Ext.onReady(function (){
                     data : [
                         {
                             "type" : "gemixt",
-                            "label" : "Beide"
+                            "label" : "Beide, bevat de VRI's waar zowel HD of OV punten aangekoppeld zijn."
                         },
                         {
                             "type" : "Hulpdiensten",
-                            "label" : "HD, bevat de VRI's waar HD-punten aan zijn gekoppeld."
+                            "label" : "HD, bevat de VRI's waar HD-punten aan zijn gekoppeld.(Deze VRI's kunnen ook OV-punten bevatten)"
                         },
                         {
                             "type" : "OV",
-                            "label" : "OV, bevat de VRI's waar OV-punten aan zijn gekoppeld."
+                            "label" : "OV, bevat de VRI's waar OV-punten aan zijn gekoppeld.(Deze VRI's kunnen ook HD-punten bevatten)"
                         }
                     ]
                 }),
