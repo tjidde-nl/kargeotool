@@ -425,11 +425,11 @@ Ext.onReady(function (){
                         },
                         {
                             "type" : "Hulpdiensten",
-                            "label" : "HD, bevat de VRI's waar HD-punten aan zijn gekoppeld.(Deze VRI's kunnen ook OV-punten bevatten)"
+                            "label" : "HD, bevat de VRI's waar HD-punten aan zijn gekoppeld. (De export kan OV-punten bevatten)"
                         },
                         {
                             "type" : "OV",
-                            "label" : "OV, bevat de VRI's waar OV-punten aan zijn gekoppeld.(Deze VRI's kunnen ook HD-punten bevatten)"
+                            "label" : "OV, bevat de VRI's waar OV-punten aan zijn gekoppeld. (De export kan HD-punten bevatten)"
                         }
                     ]
                 }),
