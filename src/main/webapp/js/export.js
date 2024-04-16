@@ -421,7 +421,7 @@ Ext.onReady(function (){
                     data : [
                         {
                             "type" : "gemixt",
-                            "label" : "Beide, bevat de VRI's waar zowel HD of OV punten aangekoppeld zijn."
+                            "label" : "OV en/of HD"
                         },
                         {
                             "type" : "Hulpdiensten",
