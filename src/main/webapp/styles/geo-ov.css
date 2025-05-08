@@ -212,9 +212,10 @@ body.editor {
 }
 
 .myDisabledClass input{
-    opacity: .3;
-    -moz-opacity: .3;
-    filter: alpha(opacity=30);
+    opacity: .8;
+	border: red;
+    -moz-opacity: .;
+    filter: alpha(opacity=80);
 }
 
 .rseqOverview{

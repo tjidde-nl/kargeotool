@@ -27,6 +27,7 @@ import org.locationtech.jts.geom.Point;
 import org.locationtech.jts.geom.PrecisionModel;
 import java.io.PrintWriter;
 import java.text.SimpleDateFormat;
+import java.time.Instant;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -526,13 +527,10 @@ public class RoadsideEquipment implements Comparable<RoadsideEquipment> {
      *
      * @return boolean if it's valid
      */
-    public boolean isValid(){
-        Date now = new Date();
-        if(validFrom.compareTo(now) <= 0 && (validUntil == null || validUntil.after(now))){
-            return true;
-        }else{
-            return false;
-        }
+    public boolean isValid() {
+        Date now = new Date();                       // current instant (system clock, default TZ)
+        return !validFrom.after(now)                 // validFrom ≤ now   (inclusive)
+               && (validUntil == null || validUntil.after(now));  // validUntil  > now (exclusive)
     }
 
     /**
