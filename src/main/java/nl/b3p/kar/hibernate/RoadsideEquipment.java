@@ -528,9 +528,23 @@ public class RoadsideEquipment implements Comparable<RoadsideEquipment> {
      * @return boolean if it's valid
      */
     public boolean isValid() {
-        Date now = new Date();                       // current instant (system clock, default TZ)
-        return !validFrom.after(now)                 // validFrom ≤ now   (inclusive)
-               && (validUntil == null || validUntil.after(now));  // validUntil  > now (exclusive)
+        Date now = new Date();   
+        boolean valid = true;
+        try{
+        if(valid.after(now))
+        {
+            valid = false;
+        }        
+        if(valid_until !=null && valid_until.before(now))
+        {
+            valid=false;
+        }   
+        }   
+        catch(Exception ex ){
+            out.println(ex);
+            valid=true;
+        }     
+       return valid;
     }
 
     /**
