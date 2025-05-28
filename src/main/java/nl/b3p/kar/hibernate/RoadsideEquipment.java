@@ -26,7 +26,6 @@ import nl.b3p.kar.jaxb.TmiDateAdapter;
 import org.locationtech.jts.geom.Point;
 import org.locationtech.jts.geom.PrecisionModel;
 
-import java.beans.Transient;
 import java.io.PrintWriter;
 import java.text.SimpleDateFormat;
 import java.time.Instant;
