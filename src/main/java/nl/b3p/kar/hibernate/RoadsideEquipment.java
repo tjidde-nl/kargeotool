@@ -542,8 +542,7 @@ public class RoadsideEquipment implements Comparable<RoadsideEquipment> {
             valid=false;
         }   
         }   
-        catch(Exception ex ){
-            System.out.println(ex);
+        catch(Exception ex ){           
             valid=true;
         }     
        return valid;
