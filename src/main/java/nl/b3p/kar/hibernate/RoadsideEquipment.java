@@ -532,7 +532,7 @@ public class RoadsideEquipment implements Comparable<RoadsideEquipment> {
     public boolean isValid() {
         Date now = new Date();   
         boolean valid = true;
-        try{
+    
         if(validFrom.after(now))
         {
             valid = false;
@@ -541,10 +541,7 @@ public class RoadsideEquipment implements Comparable<RoadsideEquipment> {
         {
             valid=false;
         }   
-        }   
-        catch(Exception ex ){           
-            valid=true;
-        }     
+            
        return valid;
     }
 
