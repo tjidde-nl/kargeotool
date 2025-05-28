@@ -531,11 +531,11 @@ public class RoadsideEquipment implements Comparable<RoadsideEquipment> {
         Date now = new Date();   
         boolean valid = true;
         try{
-        if(valid.after(now))
+        if(validFrom.after(now))
         {
             valid = false;
         }        
-        if(valid_until !=null && valid_until.before(now))
+        if(validUntil !=null && validUntil.before(now))
         {
             valid=false;
         }   
