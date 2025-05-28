@@ -534,10 +534,12 @@ public class RoadsideEquipment implements Comparable<RoadsideEquipment> {
     
         if(validFrom.after(now))
         {
+            System.out.println("VALIDFROM AFTER");
             valid = false;
         }        
         if(validUntil !=null && validUntil.before(now))
         {
+              System.out.println("VALIDUNTIL AFTER");
             valid=false;
         }   
             
