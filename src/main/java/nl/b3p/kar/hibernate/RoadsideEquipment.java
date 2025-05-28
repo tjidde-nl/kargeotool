@@ -529,9 +529,10 @@ public class RoadsideEquipment implements Comparable<RoadsideEquipment> {
      * @return boolean if it's valid
      */
     public boolean isValid() {
+        
         Date now = new Date();   
         boolean valid = true;
-    
+          System.out.println("Checking VALID");
         if(validFrom.after(now))
         {
             System.out.println("VALIDFROM AFTER");
@@ -542,7 +543,7 @@ public class RoadsideEquipment implements Comparable<RoadsideEquipment> {
               System.out.println("VALIDUNTIL AFTER");
             valid=false;
         }   
-            
+            System.out.println("VALID");
        return valid;
     }
 
