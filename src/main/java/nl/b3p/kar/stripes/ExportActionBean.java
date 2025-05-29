@@ -652,7 +652,7 @@ public class ExportActionBean implements ActionBean, ValidationErrorHandler {
 
     public Resolution rseqByKarAddress() throws JSONException {
         EntityManager em = Stripersist.getEntityManager();
-
+        System.err.print("Got into rseqByKarAddress");
         JSONObject info = new JSONObject();
         info.put("success", Boolean.FALSE);
         try {
@@ -678,7 +678,7 @@ public class ExportActionBean implements ActionBean, ValidationErrorHandler {
 
     public Resolution rseqByDataowner() throws JSONException {
         EntityManager em = Stripersist.getEntityManager();
-
+        System.err.print("Got into rseqByDataowner");
         JSONObject info = new JSONObject();
         info.put("success", Boolean.FALSE);
         try {
@@ -705,7 +705,7 @@ public class ExportActionBean implements ActionBean, ValidationErrorHandler {
 
     public Resolution allRseqs() throws JSONException {
         EntityManager em = Stripersist.getEntityManager();
-
+        System.err.print("Got into allRseqs");
         JSONObject info = new JSONObject();
         info.put("success", Boolean.FALSE);
         try {
