@@ -78,7 +78,11 @@ public class ExportCreatorThread extends Thread {
         if (!transaction.isActive()) {
             transaction.begin();
         }
+        log.error("gotinto run");
+        
         refreshEntities();
+        log.error(roadsideEquipmentList.size());
+      
         File f = null;
         File destination = null;
         Date now = new Date();
@@ -96,6 +100,7 @@ public class ExportCreatorThread extends Thread {
                     String prefix = "geo-ov_";
                     if (roadsideEquipmentList.size() == 1) {
                         prefix = "" + roadsideEquipmentList.get(0).getKarAddress();
+                        log.error(prefix);
                     }
                     filename = prefix + "_kv9_" + sdf.format(now) + ".xml";
                     destination = new File(downloadLocation, filename);
@@ -160,7 +165,11 @@ public class ExportCreatorThread extends Thread {
         EntityManager em = Stripersist.getEntityManager();
         roadsideEquipmentList = new ArrayList<>();
         for (RoadsideEquipment roadsideEquipment : oldList) {
-            roadsideEquipmentList.add(em.find(RoadsideEquipment.class, roadsideEquipment.getId()));
+            
+            RoadsideEquipment reqes = em.find(RoadsideEquipment.class, roadsideEquipment.getId());
+            roadsideEquipmentList.add(reqes);
+            log.error("REGES VALID=>"+reqes.isValid());
+            log.error("REGES ID=>"+reqes.getId());
         }
         gebruiker = em.find(Gebruiker.class, gebruiker.getId());
     }
