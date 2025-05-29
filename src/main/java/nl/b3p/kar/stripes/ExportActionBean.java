@@ -219,6 +219,8 @@ public class ExportActionBean implements ActionBean, ValidationErrorHandler {
              System.err.print("roadsideEquipmentList was NULL =>");
             roadsideEquipmentList = Arrays.asList(new RoadsideEquipment[]{rseq});
         }
+          System.err.print("roadsideEquipmentList size  =>"+roadsideEquipmentList.size());
+          log.error("roadsideEquipmentList size  =>"+roadsideEquipmentList.size());
         ByteArrayOutputStream bos = exportXml(roadsideEquipmentList);
         Date now = new Date();
         DateFormat sdf = new SimpleDateFormat("yyyyMMddHHmmss");
@@ -234,6 +236,8 @@ public class ExportActionBean implements ActionBean, ValidationErrorHandler {
     }
     
     public static ByteArrayOutputStream exportXml(List<RoadsideEquipment> roadsideEquipmentList) throws Exception{
+         System.err.print("get into BYTEARRAY EXPORT with=>"+roadsideEquipmentList.size());
+          log.error("get into BYTEARRAY EXPORT with=>"+roadsideEquipmentList.size());
          JAXBContext ctx = JAXBContext.newInstance(TmiPush.class);
         Marshaller m = ctx.createMarshaller();
         m.setProperty("com.sun.xml.bind.namespacePrefixMapper", new KarNamespacePrefixMapper());

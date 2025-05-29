@@ -48,7 +48,7 @@ public class TmiPush extends TmiMessage {
         Kv9End end = new Kv9End();
         
         for(RoadsideEquipment rseq: rseqs) {
-            if(rseq.getValidUntil() == null) {
+            if(rseq.isValid()) {
                 def.rseqs.add(new RseqDefs(rseq));
             } else {
                 end.rseqs.add(new RseqEnd(rseq));
