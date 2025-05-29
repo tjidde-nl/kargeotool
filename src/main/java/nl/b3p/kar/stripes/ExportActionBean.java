@@ -90,7 +90,8 @@ import org.stripesstuff.stripersist.Stripersist;
 public class ExportActionBean implements ActionBean, ValidationErrorHandler {
 
     private final int EXPORT_THRESHOLD = 125;
-    private static final jdk.internal.net.http.common.Log log = LogFactory.getLog(ExportActionBean.class);
+    private static final Log log = LogFactory.getLog(ExportActionBean.class);
+   // private static final jdk.internal.net.http.common.Log log = LogFactory.getLog(ExportActionBean.class);
     private static final String OVERVIEW = "/WEB-INF/jsp/export/overview.jsp";
     private ActionBeanContext context;
 
