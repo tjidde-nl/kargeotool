@@ -194,11 +194,11 @@ public class ExportActionBean implements ActionBean, ValidationErrorHandler {
                     return exportPtx();
                 case "kv9":
                     if (roadsideEquipmentList.size() > EXPORT_THRESHOLD) {
-                         System.err.print("REGES =>"+roadsideEquipmentList.size());
+                         //System.err.print("REGES =>"+roadsideEquipmentList.size());
                         this.context.getValidationErrors().add("Aantal", new SimpleError(("Kan maximaal " + EXPORT_THRESHOLD + " VRI's exporteren. Het huidige aantal is " + roadsideEquipmentList.size() + ".")));
                         return new ForwardResolution(OVERVIEW);
                     } else {
-                         System.err.print("case kv9, gonna to export XML"+roadsideEquipmentList.size());
+                         //System.err.print("case kv9, gonna to export XML"+roadsideEquipmentList.size());
                         return exportXml();
                     }
                 case "csvsimple":
@@ -216,11 +216,11 @@ public class ExportActionBean implements ActionBean, ValidationErrorHandler {
         // This event handler can be called directly with rseq parameter, or from export() when the roadsideEquipment
         // list has been created
         if (roadsideEquipmentList == null) {
-             System.err.print("roadsideEquipmentList was NULL =>");
+             //System.err.print("roadsideEquipmentList was NULL =>");
             roadsideEquipmentList = Arrays.asList(new RoadsideEquipment[]{rseq});
         }
-          System.err.print("roadsideEquipmentList size  =>"+roadsideEquipmentList.size());
-          log.error("roadsideEquipmentList size  =>"+roadsideEquipmentList.size());
+          //System.err.print("roadsideEquipmentList size  =>"+roadsideEquipmentList.size());
+        //  log.error("roadsideEquipmentList size  =>"+roadsideEquipmentList.size());
         ByteArrayOutputStream bos = exportXml(roadsideEquipmentList);
         Date now = new Date();
         DateFormat sdf = new SimpleDateFormat("yyyyMMddHHmmss");
@@ -236,8 +236,8 @@ public class ExportActionBean implements ActionBean, ValidationErrorHandler {
     }
     
     public static ByteArrayOutputStream exportXml(List<RoadsideEquipment> roadsideEquipmentList) throws Exception{
-         System.err.print("get into BYTEARRAY EXPORT with=>"+roadsideEquipmentList.size());
-          log.error("get into BYTEARRAY EXPORT with=>"+roadsideEquipmentList.size());
+         //System.err.print("get into BYTEARRAY EXPORT with=>"+roadsideEquipmentList.size());
+         // log.error("get into BYTEARRAY EXPORT with=>"+roadsideEquipmentList.size());
          JAXBContext ctx = JAXBContext.newInstance(TmiPush.class);
         Marshaller m = ctx.createMarshaller();
         m.setProperty("com.sun.xml.bind.namespacePrefixMapper", new KarNamespacePrefixMapper());
@@ -660,8 +660,8 @@ public class ExportActionBean implements ActionBean, ValidationErrorHandler {
 
     public Resolution rseqByKarAddress() throws JSONException {
         EntityManager em = Stripersist.getEntityManager();
-        log.error( "Got into rseqByKarAddress");
-        System.err.print("Got into rseqByKarAddress");
+      //  log.error( "Got into rseqByKarAddress");
+        //System.err.print("Got into rseqByKarAddress");
         JSONObject info = new JSONObject();
         info.put("success", Boolean.FALSE);
         try {
@@ -687,8 +687,8 @@ public class ExportActionBean implements ActionBean, ValidationErrorHandler {
 
     public Resolution rseqByDataowner() throws JSONException {
         EntityManager em = Stripersist.getEntityManager();
-                log.error( "Got into rseqByDataowner");
-        System.err.print("Got into rseqByDataowner");
+               // log.error( "Got into rseqByDataowner");
+        //System.err.print("Got into rseqByDataowner");
         JSONObject info = new JSONObject();
         info.put("success", Boolean.FALSE);
         try {
@@ -715,8 +715,8 @@ public class ExportActionBean implements ActionBean, ValidationErrorHandler {
 
     public Resolution allRseqs() throws JSONException {
         EntityManager em = Stripersist.getEntityManager();
-                log.error( "Got into allRseqs");
-        System.err.print("Got into allRseqs");
+                //log.error( "Got into allRseqs");
+        //System.err.print("Got into allRseqs");
         JSONObject info = new JSONObject();
         info.put("success", Boolean.FALSE);
         try {
@@ -756,21 +756,21 @@ public class ExportActionBean implements ActionBean, ValidationErrorHandler {
 
     private JSONArray makeRseqArray(List<RoadsideEquipment> rseqs) throws JSONException {
         JSONArray rseqArray = new JSONArray();
-        log.error( "Amount of rseqs"+rseqs.size());
-        System.err.print("Amount of rseqs"+rseqs.size());
+        //log.error( "Amount of rseqs"+rseqs.size());
+        //System.err.print("Amount of rseqs"+rseqs.size());
         for (RoadsideEquipment rseqObj : rseqs) {
             
         
             if (getGebruiker().canRead(rseqObj)) {
                 if (onlyValid && !rseqObj.isValid()) {
-                      log.error( "NOT VALID"+rseqObj.getId());
-                      System.err.print("RESQOBJ NOT VALID"+rseqObj.getId());
+                      //log.error( "NOT VALID"+rseqObj.getId());
+                      //System.err.print("RESQOBJ NOT VALID"+rseqObj.getId());
                     continue;
                 }
                 
                 if(vehicleType == null || vehicleType.equalsIgnoreCase(VehicleType.VEHICLE_TYPE_GEMIXT) || rseqObj.getVehicleType().equalsIgnoreCase(vehicleType) ||  rseqObj.getVehicleType().equalsIgnoreCase(VehicleType.VEHICLE_TYPE_GEMIXT)){
-                  System.err.print("Got into IF");
-                log.error( "Got into IF");
+                  //System.err.print("Got into IF");
+              //  log.error( "Got into IF");
                 JSONObject jRseq = new JSONObject();
                     jRseq.put("id", rseqObj.getId());
                     jRseq.put("naam", rseqObj.getDescription());
@@ -793,8 +793,8 @@ public class ExportActionBean implements ActionBean, ValidationErrorHandler {
 
     @Override
     public Resolution handleValidationErrors(ValidationErrors errors) throws Exception {
-        System.err.print("Got into handleValidationErrors");
-                log.error( "Got into handleValidationErrors");
+        //System.err.print("Got into handleValidationErrors");
+        //        log.error( "Got into handleValidationErrors");
         return null;
     }
 
