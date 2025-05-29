@@ -30,6 +30,7 @@ import java.io.IOException;
 import java.io.OutputStream;
 import java.io.PrintWriter;
 import java.io.StringReader;
+import java.lang.System.Logger.Level;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -90,7 +91,7 @@ import org.stripesstuff.stripersist.Stripersist;
 public class ExportActionBean implements ActionBean, ValidationErrorHandler {
 
     private final int EXPORT_THRESHOLD = 125;
-    private static final Log log = LogFactory.getLog(ExportActionBean.class);
+    private static final jdk.internal.net.http.common.Log log = LogFactory.getLog(ExportActionBean.class);
     private static final String OVERVIEW = "/WEB-INF/jsp/export/overview.jsp";
     private ActionBeanContext context;
 
@@ -652,6 +653,7 @@ public class ExportActionBean implements ActionBean, ValidationErrorHandler {
 
     public Resolution rseqByKarAddress() throws JSONException {
         EntityManager em = Stripersist.getEntityManager();
+        log.log(ERROR, "Got into rseqByKarAddress");
         System.err.print("Got into rseqByKarAddress");
         JSONObject info = new JSONObject();
         info.put("success", Boolean.FALSE);
@@ -678,6 +680,7 @@ public class ExportActionBean implements ActionBean, ValidationErrorHandler {
 
     public Resolution rseqByDataowner() throws JSONException {
         EntityManager em = Stripersist.getEntityManager();
+                log.log(ERROR, "Got into rseqByDataowner");
         System.err.print("Got into rseqByDataowner");
         JSONObject info = new JSONObject();
         info.put("success", Boolean.FALSE);
@@ -705,6 +708,7 @@ public class ExportActionBean implements ActionBean, ValidationErrorHandler {
 
     public Resolution allRseqs() throws JSONException {
         EntityManager em = Stripersist.getEntityManager();
+                log.log(ERROR, "Got into allRseqs");
         System.err.print("Got into allRseqs");
         JSONObject info = new JSONObject();
         info.put("success", Boolean.FALSE);
@@ -745,18 +749,21 @@ public class ExportActionBean implements ActionBean, ValidationErrorHandler {
 
     private JSONArray makeRseqArray(List<RoadsideEquipment> rseqs) throws JSONException {
         JSONArray rseqArray = new JSONArray();
+        log.log(ERROR, "Amount of rseqs"+rseqs.size());
         System.err.print("Amount of rseqs"+rseqs.size());
         for (RoadsideEquipment rseqObj : rseqs) {
             
         
             if (getGebruiker().canRead(rseqObj)) {
                 if (onlyValid && !rseqObj.isValid()) {
+                      log.log(ERROR, "NOT VALID"+rseqObj.getId());
                       System.err.print("RESQOBJ NOT VALID"+rseqObj.getId());
                     continue;
                 }
                 
                 if(vehicleType == null || vehicleType.equalsIgnoreCase(VehicleType.VEHICLE_TYPE_GEMIXT) || rseqObj.getVehicleType().equalsIgnoreCase(vehicleType) ||  rseqObj.getVehicleType().equalsIgnoreCase(VehicleType.VEHICLE_TYPE_GEMIXT)){
                   System.err.print("Got into IF");
+                log.log(ERROR, "Got into IF");
                 JSONObject jRseq = new JSONObject();
                     jRseq.put("id", rseqObj.getId());
                     jRseq.put("naam", rseqObj.getDescription());
@@ -780,6 +787,7 @@ public class ExportActionBean implements ActionBean, ValidationErrorHandler {
     @Override
     public Resolution handleValidationErrors(ValidationErrors errors) throws Exception {
         System.err.print("Got into handleValidationErrors");
+                log.log(ERROR, "Got into handleValidationErrors");
         return null;
     }
 
