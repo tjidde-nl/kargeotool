@@ -78,9 +78,11 @@ public class ExportCreatorThread extends Thread {
         if (!transaction.isActive()) {
             transaction.begin();
         }
+         System.err.print("Got into RUN");
         log.error("gotinto run");
         
         refreshEntities();
+        System.err.print(roadsideEquipmentList.size());
         log.error(roadsideEquipmentList.size());
       
         File f = null;
@@ -101,6 +103,7 @@ public class ExportCreatorThread extends Thread {
                     if (roadsideEquipmentList.size() == 1) {
                         prefix = "" + roadsideEquipmentList.get(0).getKarAddress();
                         log.error(prefix);
+                         System.err.print("PREFIX=>"+prefix);
                     }
                     filename = prefix + "_kv9_" + sdf.format(now) + ".xml";
                     destination = new File(downloadLocation, filename);
@@ -168,6 +171,8 @@ public class ExportCreatorThread extends Thread {
             
             RoadsideEquipment reqes = em.find(RoadsideEquipment.class, roadsideEquipment.getId());
             roadsideEquipmentList.add(reqes);
+            System.err.print("REGES VALID=>"+reqes.isValid());
+             System.err.print("REGES ID=>"+reqes.getId());
             log.error("REGES VALID=>"+reqes.isValid());
             log.error("REGES ID=>"+reqes.getId());
         }

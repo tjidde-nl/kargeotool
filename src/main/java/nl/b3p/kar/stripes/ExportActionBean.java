@@ -194,9 +194,11 @@ public class ExportActionBean implements ActionBean, ValidationErrorHandler {
                     return exportPtx();
                 case "kv9":
                     if (roadsideEquipmentList.size() > EXPORT_THRESHOLD) {
+                         System.err.print("REGES =>"+roadsideEquipmentList.size());
                         this.context.getValidationErrors().add("Aantal", new SimpleError(("Kan maximaal " + EXPORT_THRESHOLD + " VRI's exporteren. Het huidige aantal is " + roadsideEquipmentList.size() + ".")));
                         return new ForwardResolution(OVERVIEW);
                     } else {
+                         System.err.print("case kv9, gonna to export XML"+roadsideEquipmentList.size());
                         return exportXml();
                     }
                 case "csvsimple":
@@ -214,6 +216,7 @@ public class ExportActionBean implements ActionBean, ValidationErrorHandler {
         // This event handler can be called directly with rseq parameter, or from export() when the roadsideEquipment
         // list has been created
         if (roadsideEquipmentList == null) {
+             System.err.print("roadsideEquipmentList was NULL =>");
             roadsideEquipmentList = Arrays.asList(new RoadsideEquipment[]{rseq});
         }
         ByteArrayOutputStream bos = exportXml(roadsideEquipmentList);
