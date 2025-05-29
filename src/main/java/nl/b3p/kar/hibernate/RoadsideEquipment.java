@@ -532,6 +532,10 @@ public class RoadsideEquipment implements Comparable<RoadsideEquipment> {
         
         Date now = new Date();   
         boolean valid = true;
+        System.err.print("Checking VALID");
+        System.err.print(now);
+        System.err.print(validUntil);
+        
           System.out.println("Checking VALID");
         if(validFrom.after(now))
         {

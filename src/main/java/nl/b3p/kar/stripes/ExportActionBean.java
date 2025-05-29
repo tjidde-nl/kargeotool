@@ -745,14 +745,18 @@ public class ExportActionBean implements ActionBean, ValidationErrorHandler {
 
     private JSONArray makeRseqArray(List<RoadsideEquipment> rseqs) throws JSONException {
         JSONArray rseqArray = new JSONArray();
+        System.err.print("Amount of rseqs"+rseqs.size());
         for (RoadsideEquipment rseqObj : rseqs) {
+            
+        
             if (getGebruiker().canRead(rseqObj)) {
                 if (onlyValid && !rseqObj.isValid()) {
+                      System.err.print("RESQOBJ NOT VALID"+rseqObj.getId());
                     continue;
                 }
                 
                 if(vehicleType == null || vehicleType.equalsIgnoreCase(VehicleType.VEHICLE_TYPE_GEMIXT) || rseqObj.getVehicleType().equalsIgnoreCase(vehicleType) ||  rseqObj.getVehicleType().equalsIgnoreCase(VehicleType.VEHICLE_TYPE_GEMIXT)){
-                
+                  System.err.print("Got into IF");
                 JSONObject jRseq = new JSONObject();
                     jRseq.put("id", rseqObj.getId());
                     jRseq.put("naam", rseqObj.getDescription());
@@ -775,6 +779,7 @@ public class ExportActionBean implements ActionBean, ValidationErrorHandler {
 
     @Override
     public Resolution handleValidationErrors(ValidationErrors errors) throws Exception {
+        System.err.print("Got into handleValidationErrors");
         return null;
     }
 
