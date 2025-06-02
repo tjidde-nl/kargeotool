@@ -536,7 +536,7 @@ public class RoadsideEquipment implements Comparable<RoadsideEquipment> {
         //System.err.print(now);
         //System.err.print(validUntil);
         
-          System.out.println("Checking VALID");
+         // System.out.println("Checking VALID");
         if(validFrom.after(now))
         {
             System.out.println("VALIDFROM AFTER");
@@ -547,7 +547,7 @@ public class RoadsideEquipment implements Comparable<RoadsideEquipment> {
               System.out.println("VALIDUNTIL AFTER");
             valid=false;
         }   
-            System.out.println("VALID");
+          //  System.out.println("VALID");
        return valid;
     }
 
