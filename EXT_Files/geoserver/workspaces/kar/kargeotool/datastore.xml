@@ -14,7 +14,7 @@
     <entry key="encode functions">false</entry>
     <entry key="Batch insert size">1</entry>
     <entry key="preparedStatements">false</entry>
-    <entry key="database">geo_ov</entry>
+    <entry key="database">postgres</entry>
     <entry key="host">kargeo-postgis</entry>
     <entry key="Loose bbox">true</entry>
     <entry key="Estimated extends">true</entry>

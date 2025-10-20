@@ -39,7 +39,7 @@
             <VendorOption name="forceLeftToRight">true</VendorOption>
 
             <Label>
-              <ogc:PropertyName>linepublicnumber</ogc:PropertyName>
+              <ogc:PropertyName>journey_id</ogc:PropertyName>
             </Label>
             <LabelPlacement>
               <LinePlacement>
